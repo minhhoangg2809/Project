@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:Quanlythuvien.ViewModel">
+    <viewmodel:Nhaxuatban_ViewModel x:Key="vm_nhaxuatban"></viewmodel:Nhaxuatban_ViewModel>
+    <viewmodel:Theloai_ViewModel x:Key="vm_theloai"></viewmodel:Theloai_ViewModel>
+    <viewmodel:Sach_ViewModel x:Key="vm_sach"></viewmodel:Sach_ViewModel>
+    <viewmodel:Themuon_ViewModel x:Key="vm_themuon"></viewmodel:Themuon_ViewModel>
+    <viewmodel:Docgia_ViewModel x:Key="vm_docgia"></viewmodel:Docgia_ViewModel>
+    <viewmodel:Muontrasach_ViewModel x:Key="vm_muontrasach"></viewmodel:Muontrasach_ViewModel>
+</ResourceDictionary>
