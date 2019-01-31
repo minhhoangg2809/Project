@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuanlythuvienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Docgia">
+          <Key>
+            <PropertyRef Name="ma_docgia" />
+          </Key>
+          <Property Name="ma_docgia" Type="int" Nullable="false" />
+          <Property Name="ten_docgia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sothe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Muontra">
+          <Key>
+            <PropertyRef Name="ma_muontra" />
+          </Key>
+          <Property Name="ma_muontra" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ma_docgia" Type="int" />
+          <Property Name="ma_sach" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaymuon" Type="date" Nullable="false" />
+          <Property Name="ngaytra" Type="date" />
+          <Property Name="datra" Type="bit" Nullable="false" />
+          <Property Name="ghichu" Type="text" />
+          <Property Name="ngaymuon_hienthi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaytra_hienthi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Nhaxuatban">
+          <Key>
+            <PropertyRef Name="ma_nhaxuatban" />
+          </Key>
+          <Property Name="ma_nhaxuatban" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ten_nhaxuatban" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="nguoidaidien" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sach">
+          <Key>
+            <PropertyRef Name="ma_sach" />
+          </Key>
+          <Property Name="ma_sach" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ten_sach" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ma_theloai" Type="nvarchar" MaxLength="50" />
+          <Property Name="ma_nhaxuatban" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Theloai">
+          <Key>
+            <PropertyRef Name="ma_theloai" />
+          </Key>
+          <Property Name="ma_theloai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ten_theloai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ghichu" Type="text" />
+        </EntityType>
+        <EntityType Name="Thethuvien">
+          <Key>
+            <PropertyRef Name="sothe" />
+          </Key>
+          <Property Name="sothe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ngaybd" Type="date" Nullable="false" />
+          <Property Name="ngaykt" Type="date" Nullable="false" />
+          <Property Name="ngaybd_hienthi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ngaykt_hienthi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ghichu" Type="text" />
+        </EntityType>
+        <Association Name="fk_Docgia_sothe">
+          <End Role="Thethuvien" Type="Self.Thethuvien" Multiplicity="0..1" />
+          <End Role="Docgia" Type="Self.Docgia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thethuvien">
+              <PropertyRef Name="sothe" />
+            </Principal>
+            <Dependent Role="Docgia">
+              <PropertyRef Name="sothe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Muontra_ma_docgia">
+          <End Role="Docgia" Type="Self.Docgia" Multiplicity="0..1" />
+          <End Role="Muontra" Type="Self.Muontra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docgia">
+              <PropertyRef Name="ma_docgia" />
+            </Principal>
+            <Dependent Role="Muontra">
+              <PropertyRef Name="ma_docgia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Muontra_ma_sach">
+          <End Role="Sach" Type="Self.Sach" Multiplicity="0..1" />
+          <End Role="Muontra" Type="Self.Muontra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="ma_sach" />
+            </Principal>
+            <Dependent Role="Muontra">
+              <PropertyRef Name="ma_sach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sach_ma_nxb">
+          <End Role="Nhaxuatban" Type="Self.Nhaxuatban" Multiplicity="0..1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="ma_nhaxuatban" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="ma_nhaxuatban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sach_ma_theloai">
+          <End Role="Theloai" Type="Self.Theloai" Multiplicity="0..1" />
+          <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theloai">
+              <PropertyRef Name="ma_theloai" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="ma_theloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanlythuvienModelStoreContainer">
+          <EntitySet Name="Docgia" EntityType="Self.Docgia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Muontra" EntityType="Self.Muontra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nhaxuatban" EntityType="Self.Nhaxuatban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Theloai" EntityType="Self.Theloai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thethuvien" EntityType="Self.Thethuvien" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_Docgia_sothe" Association="Self.fk_Docgia_sothe">
+            <End Role="Thethuvien" EntitySet="Thethuvien" />
+            <End Role="Docgia" EntitySet="Docgia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Muontra_ma_docgia" Association="Self.fk_Muontra_ma_docgia">
+            <End Role="Docgia" EntitySet="Docgia" />
+            <End Role="Muontra" EntitySet="Muontra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Muontra_ma_sach" Association="Self.fk_Muontra_ma_sach">
+            <End Role="Sach" EntitySet="Sach" />
+            <End Role="Muontra" EntitySet="Muontra" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sach_ma_nxb" Association="Self.fk_Sach_ma_nxb">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatban" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sach_ma_theloai" Association="Self.fk_Sach_ma_theloai">
+            <End Role="Theloai" EntitySet="Theloai" />
+            <End Role="Sach" EntitySet="Sach" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanlythuvienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuanlythuvienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Docgias" EntityType="QuanlythuvienModel.Docgia" />
+          <EntitySet Name="Muontras" EntityType="QuanlythuvienModel.Muontra" />
+          <EntitySet Name="Nhaxuatbans" EntityType="QuanlythuvienModel.Nhaxuatban" />
+          <EntitySet Name="Saches" EntityType="QuanlythuvienModel.Sach" />
+          <EntitySet Name="sysdiagrams" EntityType="QuanlythuvienModel.sysdiagram" />
+          <EntitySet Name="Theloais" EntityType="QuanlythuvienModel.Theloai" />
+          <EntitySet Name="Thethuviens" EntityType="QuanlythuvienModel.Thethuvien" />
+          <AssociationSet Name="fk_Docgia_sothe" Association="QuanlythuvienModel.fk_Docgia_sothe">
+            <End Role="Thethuvien" EntitySet="Thethuviens" />
+            <End Role="Docgia" EntitySet="Docgias" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Muontra_ma_docgia" Association="QuanlythuvienModel.fk_Muontra_ma_docgia">
+            <End Role="Docgia" EntitySet="Docgias" />
+            <End Role="Muontra" EntitySet="Muontras" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Muontra_ma_sach" Association="QuanlythuvienModel.fk_Muontra_ma_sach">
+            <End Role="Sach" EntitySet="Saches" />
+            <End Role="Muontra" EntitySet="Muontras" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sach_ma_nxb" Association="QuanlythuvienModel.fk_Sach_ma_nxb">
+            <End Role="Nhaxuatban" EntitySet="Nhaxuatbans" />
+            <End Role="Sach" EntitySet="Saches" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Sach_ma_theloai" Association="QuanlythuvienModel.fk_Sach_ma_theloai">
+            <End Role="Theloai" EntitySet="Theloais" />
+            <End Role="Sach" EntitySet="Saches" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Docgia">
+          <Key>
+            <PropertyRef Name="ma_docgia" />
+          </Key>
+          <Property Name="ma_docgia" Type="Int32" Nullable="false" />
+          <Property Name="ten_docgia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sothe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Thethuvien" Relationship="QuanlythuvienModel.fk_Docgia_sothe" FromRole="Docgia" ToRole="Thethuvien" />
+          <NavigationProperty Name="Muontras" Relationship="QuanlythuvienModel.fk_Muontra_ma_docgia" FromRole="Docgia" ToRole="Muontra" />
+        </EntityType>
+        <EntityType Name="Muontra">
+          <Key>
+            <PropertyRef Name="ma_muontra" />
+          </Key>
+          <Property Name="ma_muontra" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ma_docgia" Type="Int32" />
+          <Property Name="ma_sach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaymuon" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaytra" Type="DateTime" Precision="0" />
+          <Property Name="datra" Type="Boolean" Nullable="false" />
+          <Property Name="ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ngaymuon_hienthi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytra_hienthi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Docgia" Relationship="QuanlythuvienModel.fk_Muontra_ma_docgia" FromRole="Muontra" ToRole="Docgia" />
+          <NavigationProperty Name="Sach" Relationship="QuanlythuvienModel.fk_Muontra_ma_sach" FromRole="Muontra" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="Nhaxuatban">
+          <Key>
+            <PropertyRef Name="ma_nhaxuatban" />
+          </Key>
+          <Property Name="ma_nhaxuatban" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ten_nhaxuatban" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nguoidaidien" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Saches" Relationship="QuanlythuvienModel.fk_Sach_ma_nxb" FromRole="Nhaxuatban" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="Sach">
+          <Key>
+            <PropertyRef Name="ma_sach" />
+          </Key>
+          <Property Name="ma_sach" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ten_sach" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ma_theloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ma_nhaxuatban" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Muontras" Relationship="QuanlythuvienModel.fk_Muontra_ma_sach" FromRole="Sach" ToRole="Muontra" />
+          <NavigationProperty Name="Nhaxuatban" Relationship="QuanlythuvienModel.fk_Sach_ma_nxb" FromRole="Sach" ToRole="Nhaxuatban" />
+          <NavigationProperty Name="Theloai" Relationship="QuanlythuvienModel.fk_Sach_ma_theloai" FromRole="Sach" ToRole="Theloai" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Theloai">
+          <Key>
+            <PropertyRef Name="ma_theloai" />
+          </Key>
+          <Property Name="ma_theloai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ten_theloai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Saches" Relationship="QuanlythuvienModel.fk_Sach_ma_theloai" FromRole="Theloai" ToRole="Sach" />
+        </EntityType>
+        <EntityType Name="Thethuvien">
+          <Key>
+            <PropertyRef Name="sothe" />
+          </Key>
+          <Property Name="sothe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaybd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaykt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ngaybd_hienthi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ngaykt_hienthi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Docgias" Relationship="QuanlythuvienModel.fk_Docgia_sothe" FromRole="Thethuvien" ToRole="Docgia" />
+          <Property Name="ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_Docgia_sothe">
+          <End Type="QuanlythuvienModel.Thethuvien" Role="Thethuvien" Multiplicity="0..1" />
+          <End Type="QuanlythuvienModel.Docgia" Role="Docgia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thethuvien">
+              <PropertyRef Name="sothe" />
+            </Principal>
+            <Dependent Role="Docgia">
+              <PropertyRef Name="sothe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Muontra_ma_docgia">
+          <End Type="QuanlythuvienModel.Docgia" Role="Docgia" Multiplicity="0..1" />
+          <End Type="QuanlythuvienModel.Muontra" Role="Muontra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docgia">
+              <PropertyRef Name="ma_docgia" />
+            </Principal>
+            <Dependent Role="Muontra">
+              <PropertyRef Name="ma_docgia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Muontra_ma_sach">
+          <End Type="QuanlythuvienModel.Sach" Role="Sach" Multiplicity="0..1" />
+          <End Type="QuanlythuvienModel.Muontra" Role="Muontra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sach">
+              <PropertyRef Name="ma_sach" />
+            </Principal>
+            <Dependent Role="Muontra">
+              <PropertyRef Name="ma_sach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sach_ma_nxb">
+          <End Type="QuanlythuvienModel.Nhaxuatban" Role="Nhaxuatban" Multiplicity="0..1" />
+          <End Type="QuanlythuvienModel.Sach" Role="Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhaxuatban">
+              <PropertyRef Name="ma_nhaxuatban" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="ma_nhaxuatban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Sach_ma_theloai">
+          <End Type="QuanlythuvienModel.Theloai" Role="Theloai" Multiplicity="0..1" />
+          <End Type="QuanlythuvienModel.Sach" Role="Sach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theloai">
+              <PropertyRef Name="ma_theloai" />
+            </Principal>
+            <Dependent Role="Sach">
+              <PropertyRef Name="ma_theloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanlythuvienModelStoreContainer" CdmEntityContainer="QuanlythuvienEntities">
+          <EntitySetMapping Name="Docgias">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.Docgia">
+              <MappingFragment StoreEntitySet="Docgia">
+                <ScalarProperty Name="sothe" ColumnName="sothe" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="ten_docgia" ColumnName="ten_docgia" />
+                <ScalarProperty Name="ma_docgia" ColumnName="ma_docgia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Muontras">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.Muontra">
+              <MappingFragment StoreEntitySet="Muontra">
+                <ScalarProperty Name="ngaytra_hienthi" ColumnName="ngaytra_hienthi" />
+                <ScalarProperty Name="ngaymuon_hienthi" ColumnName="ngaymuon_hienthi" />
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="datra" ColumnName="datra" />
+                <ScalarProperty Name="ngaytra" ColumnName="ngaytra" />
+                <ScalarProperty Name="ngaymuon" ColumnName="ngaymuon" />
+                <ScalarProperty Name="ma_sach" ColumnName="ma_sach" />
+                <ScalarProperty Name="ma_docgia" ColumnName="ma_docgia" />
+                <ScalarProperty Name="ma_muontra" ColumnName="ma_muontra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nhaxuatbans">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.Nhaxuatban">
+              <MappingFragment StoreEntitySet="Nhaxuatban">
+                <ScalarProperty Name="nguoidaidien" ColumnName="nguoidaidien" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="ten_nhaxuatban" ColumnName="ten_nhaxuatban" />
+                <ScalarProperty Name="ma_nhaxuatban" ColumnName="ma_nhaxuatban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saches">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.Sach">
+              <MappingFragment StoreEntitySet="Sach">
+                <ScalarProperty Name="ma_nhaxuatban" ColumnName="ma_nhaxuatban" />
+                <ScalarProperty Name="ma_theloai" ColumnName="ma_theloai" />
+                <ScalarProperty Name="ten_sach" ColumnName="ten_sach" />
+                <ScalarProperty Name="ma_sach" ColumnName="ma_sach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theloais">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.Theloai">
+              <MappingFragment StoreEntitySet="Theloai">
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="ten_theloai" ColumnName="ten_theloai" />
+                <ScalarProperty Name="ma_theloai" ColumnName="ma_theloai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thethuviens">
+            <EntityTypeMapping TypeName="QuanlythuvienModel.Thethuvien">
+              <MappingFragment StoreEntitySet="Thethuvien">
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+                <ScalarProperty Name="ngaykt_hienthi" ColumnName="ngaykt_hienthi" />
+                <ScalarProperty Name="ngaybd_hienthi" ColumnName="ngaybd_hienthi" />
+                <ScalarProperty Name="ngaykt" ColumnName="ngaykt" />
+                <ScalarProperty Name="ngaybd" ColumnName="ngaybd" />
+                <ScalarProperty Name="sothe" ColumnName="sothe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
