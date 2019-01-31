@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="Quanlythuvien.UC.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+             mc:Ignorable="d" 
+             Name="ucMenu"
+             d:DesignHeight="500" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Storyboard x:Key="menuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid_Menu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="300"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="menuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid_Menu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" 
+                      SourceName="btn_Menuopen">
+            <BeginStoryboard Storyboard="{StaticResource menuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" 
+                      SourceName="btn_Menuclose">
+            <BeginStoryboard Storyboard="{StaticResource menuClose}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid x:Name="grid_Menu" Width="300" Grid.Column="0" HorizontalAlignment="Left" fw:PointerTracker.Enabled="True"  Background="{DynamicResource SystemBaseMediumLowColorBrush}">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Button x:Name="btn_Menuclose" 
+                      ToolTip="Đóng"  
+                      Cursor="Hand"  
+                      HorizontalAlignment="Left" Width="50" Height="50" Background="{x:Null}"
+                      Style="{StaticResource ButtonRevealStyle}" Visibility="Visible">
+                    <materialDesign:PackIcon Kind="Menu" Height="30" Width="30"></materialDesign:PackIcon>
+                </Button>
+                <Button x:Name="btn_Menuopen" 
+                        ToolTip="Mở"
+                        Cursor="Hand"
+                        HorizontalAlignment="Left" Width="50" Height="50" Background="{x:Null}"
+                        Style="{StaticResource ButtonRevealStyle}" Visibility="Hidden">
+                    <materialDesign:PackIcon Kind="Menu" Height="30" Width="30"></materialDesign:PackIcon>
+                </Button>
+            </Grid>
+            <ListView x:Name="lv_Menu">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="50"></Setter>
+                    </Style>
+                    <Style TargetType="materialDesign:PackIcon">
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                        <Setter Property="FontSize" Value="13"></Setter>
+                    </Style>
+                </ListView.Resources>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding Select_Command}"
+                                               CommandParameter="{Binding ElementName=lv_Menu}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ListViewItem
+                    Uid="1"
+                    ToolTip="Màn hình chính">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="Home" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Màn hình chính" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem
+                    Uid="2"
+                    ToolTip="Sách">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="BookOpenVariant" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Sách" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem
+                    Uid="3"
+                    ToolTip="Thể loại">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="Buffer" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Thể loại" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem
+                    Uid="4"
+                    ToolTip="Nhà xuất bản">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="Library" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Nhà xuất bản" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem
+                    Uid="5"
+                    ToolTip="Thẻ thư viện">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="CardBulletedOutline" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Thẻ thư viện" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem
+                    Uid="6"
+                    ToolTip="Độc giả">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="User" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Độc giả" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem
+                    Uid="7"
+                    ToolTip="Mượn trả sách">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Grid.Column="0" Kind="Inbox" Height="30" Width="30"/>
+                        <TextBlock Grid.Column="2" Text="Mượn trả sách" VerticalAlignment="Center"/>
+                    </Grid>
+                </ListViewItem>
+                <ListViewItem Height="600"/>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,117 @@
+﻿<Page x:Class="Quanlythuvien.UC.manhinhchinh_tab1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="650" d:DesignWidth="825"
+	 Title="manhinhchinh_tab1"
+     DataContext="{StaticResource vm_sach}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Width="10"/>
+                <Button Style="{StaticResource ButtonRevealStyle}" Width="30" Height="35.5" BorderBrush="Gray">
+                    <materialDesign:PackIcon Kind="Search" Foreground="Gray"/>
+                </Button>
+                <TextBox x:Name="tb_filter" TextChanged="tb_filter_TextChanged"
+                    Style="{StaticResource TextBoxRevealStyle}" 
+                    FontSize="15" Height="35" Width="300" fw:Extensions.PlaceholderText="Tìm kiếm"></TextBox>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="25"/>
+            </Grid.ColumnDefinitions>
+            <Border
+                Grid.Column="1"
+                x:Name="bd_table" 
+                BorderBrush="Gray" 
+                BorderThickness="2" Height="490" VerticalAlignment="Top">
+                <ScrollViewer VerticalScrollBarVisibility="Visible"
+							HorizontalScrollBarVisibility="Visible"
+							Height="auto"
+							Width="auto">
+                    <ListView x:Name="lv_hienthi"
+                              ItemsSource="{Binding List}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding ma_sach}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <materialDesign:PackIcon Kind="BookmarkPlus"/>
+                                                <TextBlock Grid.Column="1" Text=" Mã sách"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding ten_sach}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <materialDesign:PackIcon Kind="BookOpenVariant"/>
+                                                <TextBlock Grid.Column="1" Text=" Tên sách"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding Theloai.ten_theloai}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <materialDesign:PackIcon Kind="Buffer"/>
+                                                <TextBlock Grid.Column="1" Text=" Thể loại"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="200" DisplayMemberBinding="{Binding Nhaxuatban.ten_nhaxuatban}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <materialDesign:PackIcon Kind="Library"/>
+                                                <TextBlock Grid.Column="1" Text=" Nhà xuất bản"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
