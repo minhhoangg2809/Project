@@ -1,0 +1,97 @@
+﻿<Window x:Class="Quanlythuvien.View.manhinhchinh"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        fw:AcrylicWindow.Enabled="True" fw:AcrylicWindow.ShowTitleBar="False"
+        xmlns:UC="clr-namespace:Quanlythuvien.UC"
+        WindowState="Maximized"
+        Title="Màn hình chính" Height="850" Width="825">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <UC:Menu></UC:Menu>
+        </Grid>
+        <Grid Grid.Column="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <UC:ControlBar></UC:ControlBar>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" Orientation="Vertical">
+                    <Button x:Name="btn_tab1" VerticalAlignment="Top" 
+                            Height="50" BorderBrush="{x:Null}" 
+                            FontSize="20" FontWeight="SemiBold"
+                            Foreground="Gray"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Cursor="Hand" Click="btn_tab_Click" Uid="t1">
+                        SÁCH
+                    </Button>
+                    <Rectangle x:Name="rec1" Fill="#FF434343" Height="3" Visibility="Visible" Uid="t1"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <Button x:Name="btn_tab2" 
+                            Foreground="Gray"
+                            Style="{Binding Path=Style,ElementName=btn_tab1}"
+                            Height="{Binding Path=Height,ElementName=btn_tab1}"
+                            FontSize="{Binding Path=FontSize,ElementName=btn_tab1}"
+                            BorderBrush="{Binding Path=BorderBrush,ElementName=btn_tab1}"
+                            Cursor="{Binding Path=Cursor,ElementName=btn_tab1}"
+                            FontWeight="{Binding Path=FontWeight,ElementName=btn_tab1}"
+                            Click="btn_tab_Click" Uid="t2">
+                        THẺ THƯ VIỆN
+                    </Button>
+                    <Rectangle x:Name="rec2" Fill="{Binding Path=Fill,ElementName=rec1}" Height="3" Visibility="Hidden" Uid="t2"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Orientation="Vertical">
+                    <Button x:Name="btn_tab3"
+                            Foreground="Gray"
+                             Style="{Binding Path=Style,ElementName=btn_tab1}"
+                             Height="{Binding Path=Height,ElementName=btn_tab1}"
+                            FontSize="{Binding Path=FontSize,ElementName=btn_tab1}"
+                            BorderBrush="{Binding Path=BorderBrush,ElementName=btn_tab1}"
+                            Cursor="{Binding Path=Cursor,ElementName=btn_tab1}"
+                            FontWeight="{Binding Path=FontWeight,ElementName=btn_tab1}"
+                            Click="btn_tab_Click" Uid="t3">
+                        ĐỘC GIẢ
+                    </Button>
+                    <Rectangle x:Name="rec3" Fill="{Binding Path=Fill,ElementName=rec1}" Height="3" Visibility="Hidden" Uid="t3"/>
+                </StackPanel>
+                <StackPanel Grid.Column="4" Orientation="Vertical">
+                    <Button x:Name="btn_tab4"
+                            Foreground="Gray"
+                            Style="{Binding Path=Style,ElementName=btn_tab1}"
+                            Height="{Binding Path=Height,ElementName=btn_tab1}"
+                            FontSize="{Binding Path=FontSize,ElementName=btn_tab1}"
+                            BorderBrush="{Binding Path=BorderBrush,ElementName=btn_tab1}"
+                            Cursor="{Binding Path=Cursor,ElementName=btn_tab1}"
+                            FontWeight="{Binding Path=FontWeight,ElementName=btn_tab1}"
+                            Click="btn_tab_Click" Uid="t4">
+                        NHÀ XUẤT BẢN
+                    </Button>
+                    <Rectangle x:Name="rec4" Fill="{Binding Path=Fill,ElementName=rec1}" Height="3" Visibility="Hidden" Uid="t4"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Frame x:Name="Main" NavigationUIVisibility="Hidden"></Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
