@@ -163,7 +163,7 @@ namespace Quanlythuvien.ViewModel
             }, p =>
             {
                 var item = Model.DataProvider.Ins.QLTV.Saches.Where(x => x.ma_sach == SelectedItem.ma_sach).SingleOrDefault();
-                item.ten_sach = Kiemtraten(Tensach);
+                item.ten_sach = Tensach;
                 item.Theloai = STheloai;
                 item.Nhaxuatban = SNhaxuatban;
 
@@ -178,7 +178,7 @@ namespace Quanlythuvien.ViewModel
                             List[i] = new Model.Sach()
                             {
                                 ma_sach = Masach,
-                                ten_sach = Kiemtraten(Tensach),
+                                ten_sach = Tensach,
                                 Theloai = STheloai,
                                 Nhaxuatban = SNhaxuatban
                             };

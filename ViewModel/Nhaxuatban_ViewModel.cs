@@ -225,11 +225,11 @@ namespace Quanlythuvien.ViewModel
 
         private string Kiemtraten(string ten) 
         {
-            int i = List.Where(x => x.ten_nhaxuatban.Contains(ten)).Count();
-            if (i!=0)
-            {
-                ten = ten + "(" + (i.ToString()) + ")";
-            }
+            //int i = List.Where(x => x.ten_nhaxuatban.Contains(ten)).Count();
+            //if (i!=0)
+            //{
+            //    ten = ten + "(" + (i.ToString()) + ")";
+            //}
             return ten;
         }
     }
