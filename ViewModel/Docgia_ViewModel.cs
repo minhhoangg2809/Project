@@ -126,6 +126,11 @@ namespace Quanlythuvien.ViewModel
                         MessageBox.Show("Thêm mới thành công", "THÔNG BÁO");
 
                         DSThethuvien();
+
+                        SelectedItem = null;
+                        Tendocgia = "";
+                        Diachi = "";
+                        SThethuvien = null;
                     }
                     catch (Exception ex)
                     {
@@ -221,9 +226,16 @@ namespace Quanlythuvien.ViewModel
 
             for (int i = 0; i < ListThethuvien.Count(); i++)
             {
-                while (List.Where(x => x.Thethuvien == ListThethuvien[i]).Count()!=0)
+                while (List.Where(x => x.Thethuvien == ListThethuvien[i]).Count() != 0)
                 {
-                    ListThethuvien.Remove(ListThethuvien[i]);
+                    if (ListThethuvien[i] == ListThethuvien[ListThethuvien.Count() - 1])
+                    {
+                        ListThethuvien.Remove(ListThethuvien[i]); break;
+                    }
+                    else
+                    {
+                        ListThethuvien.Remove(ListThethuvien[i]);
+                    }
                 };
             }
         }

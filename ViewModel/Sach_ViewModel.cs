@@ -224,6 +224,10 @@ namespace Quanlythuvien.ViewModel
         private string Taoma(string c1, string c2, int i)
         {
             string ma = c1 + c2 + ((i + 1).ToString());
+            if (List.Where(x=>x.ma_sach==ma).Count()!=0)
+            {
+                ma += ResourceCS.StaticClass.RandomString(2, false);
+            }
             return ma;
         }
 

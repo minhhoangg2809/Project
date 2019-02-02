@@ -195,6 +195,10 @@ namespace Quanlythuvien.ViewModel
         private string Taoma(int i)
         {
             string ma = "TL" + ((i + 1).ToString());
+            if (List.Where(x=>x.ma_theloai==ma).Count()!=0)
+            {
+                ma += ResourceCS.StaticClass.RandomString(2, false);
+            }
             return ma;
         }
         private string Kiemtraten(string ten)

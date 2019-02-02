@@ -223,6 +223,10 @@ namespace Quanlythuvien.ViewModel
         private string Taoma(int i)
         {
             string ma = "MATTV" + ((i + 1).ToString());
+            if (List.Where(x=>x.sothe==ma).Count()!=0)
+            {
+                ma += ResourceCS.StaticClass.RandomString(2, false);
+            }
             return ma;
         }
     }

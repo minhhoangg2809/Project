@@ -220,6 +220,10 @@ namespace Quanlythuvien.ViewModel
         private string Taoma(int i)
         {
             string ma = "NXB" + ((i + 1).ToString());
+            if (List.Where(x=>x.ma_nhaxuatban==ma).Count()!=0)
+            {
+                ma += ResourceCS.StaticClass.RandomString(2, false);
+            }
             return ma;
         }
 
