@@ -36,6 +36,22 @@ namespace Quanlythuvien.ResourceCS
             return hash.ToString();
         }
 
+        public static string RandomString(int size, bool lowerCase)
+        {
+            StringBuilder sb = new StringBuilder();
+            char c;
+            Random rand = new Random();
+            for (int i = 0; i < size; i++)
+            {
+                c = Convert.ToChar(Convert.ToInt32(rand.Next(65, 87)));
+                sb.Append(c);
+            }
+            if (lowerCase)
+                return sb.ToString().ToLower();
+            return sb.ToString();
+
+        }
+
        public static FrameworkElement GetWindowParent(UserControl p)
         {
             FrameworkElement parent = p;
