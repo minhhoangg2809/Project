@@ -98,7 +98,7 @@ namespace Quanlythuvien.ViewModel
                 try
                 {
                     var item = Model.DataProvider.Ins.QLTV.Theloais.Where(x => x.ma_theloai == SelectedItem.ma_theloai).SingleOrDefault();
-                    item.ten_theloai = Kiemtraten(Tentheloai);
+                    item.ten_theloai = Tentheloai;
                     item.ghichu = Ghichu;
 
                     Model.DataProvider.Ins.QLTV.SaveChanges();
@@ -110,7 +110,7 @@ namespace Quanlythuvien.ViewModel
                             List[i] = new Model.Theloai()
                             {
                                 ma_theloai = Matheloai,
-                                ten_theloai = Kiemtraten(Tentheloai),
+                                ten_theloai = Tentheloai,
                                 ghichu = Ghichu
                             };
                             break;

@@ -230,7 +230,8 @@ namespace Quanlythuvien.ViewModel
                 {
                     if (ListThethuvien[i] == ListThethuvien[ListThethuvien.Count() - 1])
                     {
-                        ListThethuvien.Remove(ListThethuvien[i]); break;
+                        ListThethuvien.Remove(ListThethuvien[i]);
+                        break;
                     }
                     else
                     {
