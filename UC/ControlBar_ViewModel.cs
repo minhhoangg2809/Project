@@ -31,8 +31,15 @@ namespace Quanlythuvien.UC
             {
                 if (MessageBox.Show("Đóng ứng dụng ???", "THÔNG BÁO", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
                 {
-                    Model.DataProvider.Ins.QLTV.SaveChanges();
-                    Application.Current.Shutdown();
+                    try
+                    {
+                        Model.DataProvider.Ins.QLTV.SaveChanges();
+                        Application.Current.Shutdown();
+                    }
+                    catch (Exception) 
+                    {
+                        Application.Current.Shutdown();
+                    }
                 }
             });
             //
