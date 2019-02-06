@@ -268,7 +268,7 @@
                                             </DataTemplate>
                                         </GridViewColumn.HeaderTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="auto">
+                                    <GridViewColumn Width="300">
                                         <GridViewColumn.HeaderTemplate>
                                             <DataTemplate>
                                                 <Grid>

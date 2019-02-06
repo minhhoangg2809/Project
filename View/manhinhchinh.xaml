@@ -20,7 +20,6 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -44,7 +43,14 @@
                             Cursor="Hand" Click="btn_tab_Click" Uid="t1">
                         SÁCH
                     </Button>
-                    <Rectangle x:Name="rec1" Fill="#FF434343" Height="3" Visibility="Visible" Uid="t1"/>
+                    <Rectangle x:Name="rec1" Height="3.5" Visibility="Visible" Uid="t1">
+                        <Rectangle.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Black" Offset="0.75"/>
+                                <GradientStop Color="WhiteSmoke" Offset="1"/>
+                            </RadialGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Vertical">
                     <Button x:Name="btn_tab2" 
@@ -58,7 +64,8 @@
                             Click="btn_tab_Click" Uid="t2">
                         THẺ THƯ VIỆN
                     </Button>
-                    <Rectangle x:Name="rec2" Fill="{Binding Path=Fill,ElementName=rec1}" Height="3" Visibility="Hidden" Uid="t2"/>
+                    <Rectangle x:Name="rec2" Fill="{Binding Path=Fill,ElementName=rec1}" 
+                               Height="{Binding ElementName=rec1,Path=Height}" Visibility="Hidden" Uid="t2"/>
                 </StackPanel>
                 <StackPanel Grid.Column="3" Orientation="Vertical">
                     <Button x:Name="btn_tab3"
@@ -72,7 +79,8 @@
                             Click="btn_tab_Click" Uid="t3">
                         ĐỘC GIẢ
                     </Button>
-                    <Rectangle x:Name="rec3" Fill="{Binding Path=Fill,ElementName=rec1}" Height="3" Visibility="Hidden" Uid="t3"/>
+                    <Rectangle x:Name="rec3" Fill="{Binding Path=Fill,ElementName=rec1}" 
+                               Height="{Binding ElementName=rec1,Path=Height}" Visibility="Hidden" Uid="t3"/>
                 </StackPanel>
                 <StackPanel Grid.Column="4" Orientation="Vertical">
                     <Button x:Name="btn_tab4"
@@ -86,7 +94,8 @@
                             Click="btn_tab_Click" Uid="t4">
                         NHÀ XUẤT BẢN
                     </Button>
-                    <Rectangle x:Name="rec4" Fill="{Binding Path=Fill,ElementName=rec1}" Height="3" Visibility="Hidden" Uid="t4"/>
+                    <Rectangle x:Name="rec4" Fill="{Binding Path=Fill,ElementName=rec1}" 
+                               Height="{Binding ElementName=rec1,Path=Height}" Visibility="Hidden" Uid="t4"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="3">

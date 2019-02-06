@@ -130,7 +130,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" 
+                        <Button Grid.Column="0"
                                 Cursor="Hand"
                                 Width="180"
                                 Height="50"
