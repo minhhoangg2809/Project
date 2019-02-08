@@ -41,11 +41,13 @@
                     </materialDesign:Chip.Icon>
                     <Grid>
                         <TextBox x:Name="tb_filter"
-                                 TextChanged="tb_filter_TextChanged"
                                  Width="650" 
                                  Foreground="Black"
                                  FontSize="15"
-                                 materialDesign:HintAssist.Hint="Tìm kiếm"/>
+                                 BorderBrush="{x:Null}"
+                                 FontWeight="SemiBold"
+                                 materialDesign:HintAssist.Hint="Tìm kiếm"
+                                 TextChanged="tb_filter_TextChanged"/>
                     </Grid>
                 </materialDesign:Chip>
             </Grid>

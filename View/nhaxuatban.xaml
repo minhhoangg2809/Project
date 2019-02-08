@@ -44,6 +44,8 @@
                                  Width="650" 
                                  Foreground="Black"
                                  FontSize="15"
+                                 BorderBrush="{x:Null}"
+                                 FontWeight="SemiBold"
                                  materialDesign:HintAssist.Hint="Tìm kiếm"
                                  TextChanged="tb_filter_TextChanged"/>
                     </Grid>
