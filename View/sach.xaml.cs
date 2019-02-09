@@ -36,8 +36,8 @@ namespace Quanlythuvien.View
             {
                 return ((Model.Sach)item).ma_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
                   ((Model.Sach)item).ten_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                  ((Model.Sach)item).Nhaxuatban.ten_nhaxuatban.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 ((Model.Sach)item).Theloai.ten_theloai.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                    ((Model.Sach)item).Theloai.ten_theloai.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 ((Model.Sach)item).Nhaxuatban.ten_nhaxuatban.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
 
 
             }
@@ -47,6 +47,10 @@ namespace Quanlythuvien.View
             CollectionView viewfilter = (CollectionView)CollectionViewSource.GetDefaultView(lv_hienthi.ItemsSource);
             viewfilter.Filter = FilterUser;
             CollectionViewSource.GetDefaultView(lv_hienthi.ItemsSource).Refresh();
+        }
+        private void Reset_Textfilter(object sender, MouseButtonEventArgs e)
+        {
+            tb_filter.Text = "";
         }
         #endregion
     }

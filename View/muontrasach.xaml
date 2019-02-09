@@ -34,11 +34,18 @@
                                Background="White"
                                materialDesign:ShadowAssist.ShadowDepth="Depth3">
                     <materialDesign:Chip.Icon>
-                        <materialDesign:PackIcon
+                        <Button MouseDoubleClick="Reset_Textfilter"
+                                Background="{x:Null}" 
+                                BorderBrush="{x:Null}"
+                                Height="20"
+                                Width="20" 
+                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}">
+                            <materialDesign:PackIcon
                               Kind="Search"
                               Height="20"
                               Width="20" 
                              Foreground="Black"/>
+                        </Button>
                     </materialDesign:Chip.Icon>
                     <Grid>
                         <TextBox x:Name="tb_filter"

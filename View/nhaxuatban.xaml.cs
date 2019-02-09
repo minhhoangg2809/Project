@@ -35,10 +35,10 @@ namespace Quanlythuvien.View
             else
             {
                 return ((Model.Nhaxuatban)item).ma_nhaxuatban.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       ((Model.Nhaxuatban)item).ten_nhaxuatban.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       ((Model.Nhaxuatban)item).diachi.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       ((Model.Nhaxuatban)item).email.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                       ((Model.Nhaxuatban)item).nguoidaidien.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                  ((Model.Nhaxuatban)item).ten_nhaxuatban.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   ((Model.Nhaxuatban)item).email.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    ((Model.Nhaxuatban)item).nguoidaidien.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 ((Model.Nhaxuatban)item).diachi.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
             }
         }
         private void tb_filter_TextChanged(object sender, TextChangedEventArgs e)
@@ -46,6 +46,10 @@ namespace Quanlythuvien.View
             CollectionView viewfilter = (CollectionView)CollectionViewSource.GetDefaultView(lv_hienthi.ItemsSource);
             viewfilter.Filter = FilterUser;
             CollectionViewSource.GetDefaultView(lv_hienthi.ItemsSource).Refresh();
+        }
+        private void Reset_Textfilter(object sender, MouseButtonEventArgs e)
+        {
+            tb_filter.Text = "";
         }
         #endregion
     }
