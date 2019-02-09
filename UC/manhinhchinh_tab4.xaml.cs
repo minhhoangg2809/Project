@@ -48,6 +48,10 @@ namespace Quanlythuvien.UC
             viewfilter.Filter = FilterUser;
             CollectionViewSource.GetDefaultView(lv_hienthi.ItemsSource).Refresh();
         }
+        private void Reset_Textfilter(object sender, MouseButtonEventArgs e)
+        {
+            tb_filter.Text = "";
+        }
         #endregion
     }
 }

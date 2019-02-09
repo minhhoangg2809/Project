@@ -24,7 +24,8 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
                 <TextBlock Width="10"/>
-                <Button Style="{StaticResource ButtonRevealStyle}" Width="30" Height="35.5" BorderBrush="Gray">
+                <Button MouseDoubleClick="Reset_Textfilter"
+                    Style="{StaticResource ButtonRevealStyle}" Width="30" Height="35.5" BorderBrush="Gray">
                     <materialDesign:PackIcon Kind="Search" Foreground="Gray"/>
                 </Button>
                 <TextBox x:Name="tb_filter" TextChanged="tb_filter_TextChanged"
