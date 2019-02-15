@@ -3,3 +3,5 @@
 3)Material_Design WPF
 
 ---- Quan ly thu vien----
+
+file .msi: Win 7+
