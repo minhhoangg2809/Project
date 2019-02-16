@@ -4,4 +4,5 @@
 
 ---- Quan ly thu vien----
 
-file .msi: Win 7+ (SQL server 2008)
+_file .msi : _Win 7 + 
+                 _(SQL Server 2008)
