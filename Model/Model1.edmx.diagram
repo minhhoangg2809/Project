@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="QuanlythuvienModel.Sach" Width="1.5" PointX="3" PointY="1.375" />
         <EntityTypeShape EntityType="QuanlythuvienModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" />
         <EntityTypeShape EntityType="QuanlythuvienModel.Theloai" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="QuanlythuvienModel.Thethuvien" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="QuanlythuvienModel.Thethuvien" Width="1.5" PointX="0.75" PointY="8.375" />
         <AssociationConnector Association="QuanlythuvienModel.fk_Docgia_sothe" />
         <AssociationConnector Association="QuanlythuvienModel.fk_Muontra_ma_docgia" />
         <AssociationConnector Association="QuanlythuvienModel.fk_Muontra_ma_sach" />
