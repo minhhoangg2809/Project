@@ -201,7 +201,7 @@ namespace Quanlythuvien.ViewModel
                 item.datra = Trasach;
                 item.ngaytra = Convert.ToDateTime(Ngaytra);
                 item.ngaytra_hienthi = Ngaytra;
-                item.ghichu = "Đã trả sách";
+                item.ghichu = "da tra sach";
 
                 try
                 {
