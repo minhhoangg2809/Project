@@ -166,7 +166,7 @@
                                 Height="50"
                                 Foreground="White"
                                 FontWeight="SemiBold"
-                               Background="{x:Static fw:AccentColors.ImmersiveSystemAccentDark3Brush}"
+                                Background="{x:Static fw:AccentColors.ImmersiveSystemAccentDark3Brush}"
                                 FontSize="15"
                                 Margin="5"
                                 VerticalAlignment="Bottom"

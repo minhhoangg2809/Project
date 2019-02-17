@@ -34,10 +34,20 @@ namespace Quanlythuvien.View
             }
             else
             {
-                return ((Model.Muontra)item).Docgia.sothe.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                  ((Model.Muontra)item).ngaymuon_hienthi.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                   ((Model.Muontra)item).Sach.ten_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 ((Model.Muontra)item).ngaytra_hienthi.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                try
+                {
+                    return ((Model.Muontra)item).Docgia.sothe.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 ((Model.Muontra)item).ngaymuon_hienthi.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                  ((Model.Muontra)item).Sach.ten_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                ((Model.Muontra)item).ngaytra_hienthi.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0||
+                ((Model.Muontra)item).ghichu.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+
+                }
+                catch (Exception)
+                {
+                    return true;
+                }
+               
             }
         }
         private void tb_filter_TextChanged(object sender, TextChangedEventArgs e)
