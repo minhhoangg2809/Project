@@ -35,12 +35,18 @@ namespace Quanlythuvien.UC
             }
             else
             {
-                return ((Model.Sach)item).ma_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                try
+                {
+                    return ((Model.Sach)item).ma_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
                   ((Model.Sach)item).ten_sach.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
                   ((Model.Sach)item).Nhaxuatban.ten_nhaxuatban.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
                  ((Model.Sach)item).Theloai.ten_theloai.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
-
-
+                }
+                catch (Exception)
+                {
+                    return true;
+                }
+                
             }
         }
         private void tb_filter_TextChanged(object sender, TextChangedEventArgs e)

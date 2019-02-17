@@ -35,11 +35,18 @@ namespace Quanlythuvien.UC
             }
             else
             {
-                return ((Model.Docgia)item).sothe.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 ((Model.Docgia)item).ma_docgia.ToString().IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 ((Model.Docgia)item).ten_docgia.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                  ((Model.Docgia)item).diachi.ToString().IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
-
+                try
+                {
+                    return ((Model.Docgia)item).sothe.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                ((Model.Docgia)item).ma_docgia.ToString().IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                ((Model.Docgia)item).ten_docgia.IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 ((Model.Docgia)item).diachi.ToString().IndexOf(tb_filter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                }
+                catch (Exception)
+                {
+                    return true;
+                }
+               
             }
         }
         private void tb_filter_TextChanged(object sender, TextChangedEventArgs e)
